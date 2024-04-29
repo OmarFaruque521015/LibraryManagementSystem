@@ -1,4 +1,5 @@
 ﻿using LibraryManagement.Models.Models;
+using LibraryManagement.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,8 @@ namespace LibraryManagement.DLL
         public DbSet<Books> Books { get; set; }
         public DbSet<BorrowdBooks> BorrowdBooks { get; set; }
         public DbSet<Members> Members { get; set; } 
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<RoleAssigns> RoleAssigns { get; set; }
     }
 }
