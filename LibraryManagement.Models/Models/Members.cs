@@ -18,7 +18,7 @@ namespace LibraryManagement.Models.Models
             PhoneNumber = "";
             RegistrationDate= DateTime.Now;
         }
-        [Key]
+        [Key] 
         public int MemberID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
