@@ -13,7 +13,7 @@ namespace LibraryManagement.Models.Models
         {
             MemberID = 0;
             FirstName = "";
-            LastName = "";
+            LastName = ""; 
             Email = "";
             PhoneNumber = "";
             RegistrationDate= DateTime.Now;
