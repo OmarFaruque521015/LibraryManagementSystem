@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Identity Sample\LibraryManagement\LibraryManagement.BLL\LibraryManagement.BLL.csproj" />
-    <ProjectReference Include="..\Identity Sample\LibraryManagement\LibraryManagement.DLL\LibraryManagement.DLL.csproj" />
-    <ProjectReference Include="..\Identity Sample\LibraryManagement\LibraryManagement.Models\LibraryManagement.Models.csproj" />
+    <ProjectReference Include="..\LibraryManagement.BLL\LibraryManagement.BLL.csproj" />
+    <ProjectReference Include="..\LibraryManagement.DLL\LibraryManagement.DLL.csproj" />
+    <ProjectReference Include="..\LibraryManagement.Models\LibraryManagement.Models.csproj" />
   </ItemGroup>
 
 </Project>

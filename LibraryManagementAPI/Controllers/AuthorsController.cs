@@ -13,7 +13,7 @@ namespace LibraryManagementAPI.Controllers
         public AuthorsController(IRepository<Authors> authorsRepository)
         {
             _authorsRepository = authorsRepository;
-        }
+        } 
 
         // GET: api/<AuthorsController>
         [HttpGet]
