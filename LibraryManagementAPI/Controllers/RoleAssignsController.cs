@@ -4,25 +4,27 @@ using LibraryManagement.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace LibraryManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController,Authorize]
-    public class MembersController : ControllerBase
+    public class RoleAssignsController : ControllerBase
     {
-        private readonly IRepository<Members> _membersRepository;
-        public MembersController(IRepository<Members> membersRepository)
+        private readonly IRepository<RoleAssigns> _roleAssignsRepository;
+        public RoleAssignsController(IRepository<RoleAssigns> roleAssignsRepository)
         {
-            _membersRepository = membersRepository;
+            _roleAssignsRepository = roleAssignsRepository;
         }
 
-        // GET: api/<MembersController>
+        // GET: api/<RoleAssignsController>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             try
             {
-                var data = await _membersRepository.GetAllAsync();
+                var data = await _roleAssignsRepository.GetAllAsync();
                 return Ok(data);
             }
             catch (Exception exc)
@@ -31,13 +33,13 @@ namespace LibraryManagementAPI.Controllers
             }
         }
 
-        // GET api/<MembersController>/5
+        // GET api/<RoleAssignsController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             try
             {
-                var AthrId = await _membersRepository.GetByIdAsync(id);
+                var AthrId = await _roleAssignsRepository.GetByIdAsync(id);
                 if (AthrId == null)
                 {
                     return NotFound();
@@ -50,21 +52,19 @@ namespace LibraryManagementAPI.Controllers
             }
         }
 
-        // POST api/<MembersController>
+        // POST api/<RoleAssignsController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] MemberVM memberVM)
+        public async Task<IActionResult> Post([FromBody] RoleAssignVM roleAssignVM)
         {
             try
             {
-                var membersEntity = new Members()
+                var roleAssignsEntity = new RoleAssigns()
                 {
-                    FirstName = memberVM.FirstName,
-                    LastName = memberVM.LastName,
-                    Email = memberVM.Email,
-                    PhoneNumber = memberVM.PhoneNumber
+                    UserID = roleAssignVM.UserID,
+                    RoleID = roleAssignVM.RoleID
                 };
-                var createMember = await _membersRepository.AddAsync(membersEntity);
-                return Ok(createMember);
+                var createAuthor = await _roleAssignsRepository.AddAsync(roleAssignsEntity);
+                return Ok(createAuthor);
             }
             catch (Exception exc)
             {
@@ -72,23 +72,21 @@ namespace LibraryManagementAPI.Controllers
             }
         }
 
-        // PUT api/<MembersController>/5
+        // PUT api/<RoleAssignsController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] MemberVM memberVM)
+        public async Task<IActionResult> Put(int id, [FromBody] RoleAssignVM roleAssignVM)
         {
             try
             {
-                var membersEntity = await _membersRepository.GetByIdAsync(id);
-                if (membersEntity == null)
+                var roleAssignsEntity = await _roleAssignsRepository.GetByIdAsync(id);
+                if (roleAssignsEntity == null)
                 {
                     return NotFound();
                 }
-                membersEntity.FirstName = memberVM.FirstName;
-                membersEntity.LastName = memberVM.LastName;
-                membersEntity.Email = memberVM.Email;
-                membersEntity.PhoneNumber = memberVM.PhoneNumber;
+                roleAssignsEntity.UserID = roleAssignVM.UserID;
+                roleAssignsEntity.RoleID = roleAssignVM.RoleID;
 
-                await _membersRepository.UpdateAsync(membersEntity);
+                await _roleAssignsRepository.UpdateAsync(roleAssignsEntity);
                 return NoContent();
             }
             catch (Exception exc)
@@ -97,19 +95,19 @@ namespace LibraryManagementAPI.Controllers
             }
         }
 
-        // DELETE api/<MembersController>/5
+        // DELETE api/<RoleAssignsController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var membersEntity = await _membersRepository.GetByIdAsync(id);
-                if (membersEntity == null)
+                var roleAssignsEntity = await _roleAssignsRepository.GetByIdAsync(id);
+                if (roleAssignsEntity == null)
                 {
-                    return NotFound(); 
+                    return NotFound();
                 }
 
-                await _membersRepository.DeleteAsync(membersEntity);
+                await _roleAssignsRepository.DeleteAsync(roleAssignsEntity);
                 return NoContent();
             }
             catch (Exception exc)

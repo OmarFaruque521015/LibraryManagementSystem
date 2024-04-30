@@ -1,12 +1,13 @@
 ﻿using LibraryManagement.BLL.IRepositories;
 using LibraryManagement.Models.Models;
 using LibraryManagement.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController, Authorize]
     public class BorrowdBookController : ControllerBase
     {
         private readonly IRepository<BorrowdBooks> _borrowdBooksRepository;
